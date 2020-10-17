@@ -18,8 +18,14 @@ io.on('connection', function (err, socket) {
                 socket.emit('text-event', messages)
                 socket.broadcast.emit('text-event', messages)
             }
-        })
+        });
     }
+});
+
+const PORT = 1500;
+
+serverHTTP.listen(PORT, () =>{
+    console.log(`Server Listen on Port ${PORT}`);    
 })
 
 
