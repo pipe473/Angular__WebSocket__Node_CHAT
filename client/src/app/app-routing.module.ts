@@ -5,7 +5,7 @@ import { HomeComponent } from '../app/components/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'chat', component: ChatComponent }
+  { path: 'chat/:id', component: ChatComponent }
 ];
 
 @NgModule({
