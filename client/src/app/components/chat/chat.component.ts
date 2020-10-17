@@ -9,9 +9,23 @@ import { WebSocketService } from '../../services/web-socket.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor() { }
+  userChat = {
+    user: '',
+    text: ''
+  }
+
+  messages;
+  eventName = "send-message";
+
+  constructor(private activated: ActivatedRoute, private webService: WebSocketService) { }
 
   ngOnInit(): void {
+    const id = this.activated.snapshot.params.id;
+    this.userChat.user = id;
+    
+    this.webService.listen('text-event').subscribe((data) => {
+      this.messages = data;
+    })
   }
 
 }
