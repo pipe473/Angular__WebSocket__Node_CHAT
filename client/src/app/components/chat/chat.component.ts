@@ -28,4 +28,9 @@ export class ChatComponent implements OnInit {
     })
   }
 
+  chatMessage(){
+    this.webService.emit(this.eventName, this.userChat);
+    this.userChat.text = ''
+  }
+
 }
