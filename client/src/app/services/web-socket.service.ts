@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ import { Observable, Subscriber } from 'rxjs';
 export class WebSocketService {
 
   socket: any;
-  server: "http://localhost:1500"
+  server: "https://localhost:1750"
 
   constructor() { 
     

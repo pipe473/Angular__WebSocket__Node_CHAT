@@ -5,32 +5,33 @@ import { WebSocketService } from '../../services/web-socket.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
 })
 export class ChatComponent implements OnInit {
-
   userChat = {
     user: '',
-    text: ''
-  }
+    text: '',
+  };
 
   messages;
-  eventName = "send-message";
+  eventName = 'send-message';
 
-  constructor(private activated: ActivatedRoute, private webService: WebSocketService) { }
+  constructor(
+    private activated: ActivatedRoute,
+    private webService: WebSocketService
+  ) {}
 
   ngOnInit(): void {
     const id = this.activated.snapshot.params.id;
     this.userChat.user = id;
-    
+
     this.webService.listen('text-event').subscribe((data) => {
       this.messages = data;
-    })
+    });
   }
 
-  chatMessage(){
+  chatMessage() {
     this.webService.emit(this.eventName, this.userChat);
-    this.userChat.text = ''
+    this.userChat.text = '';
   }
-
 }
